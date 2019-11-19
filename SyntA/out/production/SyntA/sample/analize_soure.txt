@@ -1,0 +1,18 @@
+abstract class Automatic : NonAutomatic
+{
+    private static int currentState, jk;
+
+    protected abstract void isCurrentState(int m, string K);
+
+    public Automatic();
+
+    ~Automatic();
+}
+
+    public static void setState(int nextState)
+    {
+        currentState = nextState;
+    }
+
+	~Automatic() = default;
+}
