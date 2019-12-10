@@ -14,8 +14,7 @@ public class CodeBuilder {
 
     public CodeBuilder(Vector<Lexem> lexems) throws IOException {
         this.lexems = lexems;
-        writer = new BufferedWriter(new FileWriter("code.txt",true));
-    }
+        writer = new BufferedWriter(new FileWriter("code.txt"));    }
 
     public void init () throws IOException {
         for (int i = 0; i < lexems.size(); i++) {

@@ -110,16 +110,16 @@ public class Main extends Application {
 
                 syntaxA.init();
                 if(syntaxA.result()) {
-                    System.out.println(syntaxA.getBugReport());
+                    chekArea.appendText(syntaxA.getBugReport().elementAt(0));
                     try {
                         codeBuilder.init();
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        e.getMessage();
                     }
                 }
                 else {
                     for (String str: syntaxA.getBugReport()) {
-                        System.out.println(str);
+                        chekArea.appendText(str);
                     }
                 }
             }
