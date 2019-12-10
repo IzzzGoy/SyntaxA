@@ -19,6 +19,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 
 
+import java.io.IOException;
 import java.util.Vector;
 
 public class Main extends Application {
@@ -26,6 +27,7 @@ public class Main extends Application {
     private Library library;
     private LexA lexA;
     private SyntaxA syntaxA;
+    private CodeBuilder codeBuilder;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -33,6 +35,7 @@ public class Main extends Application {
         library = new Library();
         lexA = new LexA(library);
         syntaxA = new SyntaxA(library);
+        codeBuilder = new CodeBuilder(library.getLexems());
 
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(15));
@@ -106,8 +109,18 @@ public class Main extends Application {
                 }
 
                 syntaxA.init();
-                for (int i = 0; i < syntaxA.getBugReport().size(); i++) {
-                    chekArea.appendText(syntaxA.getBugReport().elementAt(i) + "\n");
+                if(syntaxA.result()) {
+                    System.out.println(syntaxA.getBugReport());
+                    try {
+                        codeBuilder.init();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else {
+                    for (String str: syntaxA.getBugReport()) {
+                        System.out.println(str);
+                    }
                 }
             }
         });

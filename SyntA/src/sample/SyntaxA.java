@@ -14,6 +14,10 @@ class SyntaxA {
         bugReport = new Vector<>();
     }
 
+    public boolean result () {
+        return bugReport.isEmpty();
+    }
+
     public void init() {
         bugReport.clear();
         index = 0;
